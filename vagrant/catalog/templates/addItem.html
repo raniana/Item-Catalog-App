@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add an Item within a category</title>
+</head>
+<body>
+	<form action="{{url_for('addItem',catID=catID)}}" method="post">
+		<label>name:</label>
+		<input type="text" size="30" name="name">
+		<label>description:</label>
+		<textarea name="description"></textarea>
+		<label>brand:</label>
+		<input type="text" size="30" name="brand">
+		<label>price:</label>
+		<input type="text" size="30" name="price">
+		<input type="submit" value="Add">
+		<a href="{{url_for('showItems',catID=catID)}}"></a>
+	</form>
+
+</body>
+</html>

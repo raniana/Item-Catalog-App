@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show an Item Details</title>
+</head>
+<body>
+	<div class="flash">
+      	{%with messages = get_flashed_messages()%}
+      	{%if messages%}
+      	<ul>
+      		{%for message in messages%}
+      		<li><strong>{{message}}</strong></li>
+      		{%endfor%}
+      	</ul>
+      	{%endif%}
+      	{%endwith%}
+
+      </div>
+	<h1>Show Item</h1>
+	<h3>{{item.name}}</h3>
+	{{item.description}}
+	{%if item.brand!=None%}
+	{{item.brand}}
+	{%endif%}
+	{{item.price}}
+
+	<a href="{{url_for('editItem',itemID=item.id)}}">Edit</a>
+	<a href="{{url_for('deleteItem',itemID=item.id)}}">Delete</a>
+	<a href="{{url_for('showItems',catID=item.category_id)}}">Back</a>
+
+</body>
+</html>
