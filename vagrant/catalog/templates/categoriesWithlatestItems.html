@@ -1,0 +1,16 @@
+{%extends "categoriesMain.html" %}
+{%block content%}
+
+<div class="col-sm-9">
+            
+    <hr> 
+        <h2>Latest Items</h2>   
+      <p>
+         {%for i in items%}
+        <a href="{{url_for('showItem',itemID=i.id)}}"><h3>{{i.name}}</h3></a>
+
+        {%endfor%}
+      </p>
+      <br><br>
+     </div> 
+  {%endblock%}

@@ -24,7 +24,7 @@ def showCategories():
     #return "this page to show all the categories"
     categories=session.query(Category).all()
     latestItems=session.query(Item).order_by(Item.id.desc()).limit(5)
-    return render_template('categories.html',categories=categories, category=None,items=latestItems)
+    return render_template('categoriesWithlatestItems.html',categories=categories, items=latestItems)
 
 @app.route('/catalog/add', methods=['GET','POST'])
 def addCategory():
@@ -73,7 +73,7 @@ def showItems(catID):
     categories= session.query(Category).all()
     category = session.query(Category).filter_by(id=catID).one()
     items = session.query(Item).filter_by(category_id=catID).all()
-    return render_template('categories.html',category=category,items=items,categories=categories)
+    return render_template('showItems.html',category=category,items=items,categories=categories)
 
 @app.route('/catalog/items/<int:itemID>', methods=['GET'])
 def showItem(itemID):
@@ -93,6 +93,7 @@ def addItem(catID):
         if request.form['brand']:
             newItem.brand=request.form['brand']    
         session.add(newItem)
+        flash("New Item '%s' successfully added" %newItem.name)
         session.commit()
         
         return redirect(url_for('showItems',catID=catID))
@@ -113,7 +114,7 @@ def editItem(itemID):
         if request.form['price']:
             editedItem.price=request.form['price']
         session.add(editedItem)
-        flash("Item has been successfully edited" )
+        flash("Item has been edited" )
         session.commit()
         return redirect(url_for('showItem',itemID=editedItem.id))
 
@@ -128,6 +129,7 @@ def deleteItem(itemID):
     catID=itemTodelete.category_id
     if request.method == 'POST':
         session.delete(itemTodelete)
+        flash("Item '%s' has been deleted" %itemTodelete.name)
         session.commit()
         return redirect(url_for('showItems',catID=catID))
     else:

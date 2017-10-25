@@ -70,32 +70,12 @@
       </ul><br>
   
     </div>
-
-    <div class="col-sm-9">
-            
-    <hr>
-    {%if category!= None%}
-    <a href="{{url_for('editCategory',catID=category.id)}}">Edit Category</a>
-    <a href="{{url_for('deleteCategory',catID=category.id)}}">Delete Category</a>
-</br> 
-    <a href="{{url_for('addItem',catID=category.id)}}">Add Item</a>
-    <a href="{{url_for('showCategories')}}">home</a>
-      <h2>Items in {{category.name}}</h2>
-    {%endif%} 
-    {%if category == None%}
-        <h2>Latest Items</h2>
-    {%endif%}    
-      <p>
-      	 {%for i in items%}
-      	<a href="{{url_for('showItem',itemID=i.id)}}"><h3>{{i.name}}</h3></a>
-
-        {%endfor%}
-      </p>
-      <br><br>
-    </div>  
+    {%block content%}
+     
+     {%endblock%}
+    
   </div>
 </div>
-
 <footer class="container-fluid">
   <p>End of Page</p>
 </footer>

@@ -1,0 +1,34 @@
+{%extends "categoriesMain.html"%}
+{%block content%}
+
+<div class="col-sm-9">
+
+
+    <h2>{{category.name}}</h2>        
+    <hr>
+    {%with messages=get_flashed_messages()%}
+      {%if messages%}
+      <ul>
+        {%for message in messages%}
+        <li><strong>{{message}}</strong></li>
+      {%endfor%}
+      </ul>
+      {%endif%}
+      {%endwith%}
+
+
+    <a href="{{url_for('editCategory',catID=category.id)}}">Edit Category</a>
+    <a href="{{url_for('deleteCategory',catID=category.id)}}">Delete Category</a>
+</br> 
+    <a href="{{url_for('addItem',catID=category.id)}}">Add Item</a>
+    <a href="{{url_for('showCategories')}}">home</a>
+      <h3>Items:</h3>     
+      <p>
+      	 {%for i in items%}
+      	<a href="{{url_for('showItem',itemID=i.id)}}"><h3>{{i.name}}</h3></a>
+
+        {%endfor%}
+      </p>
+      <br><br>
+    </div>  
+    {%endblock%}
