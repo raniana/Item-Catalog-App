@@ -38,6 +38,9 @@ def showLogin():
     # return "The current session state is %s" % login_session['state']
     return render_template('login.html', STATE=state)
 
+# Oauth2 functionalities code obtained from Udacity.com
+#course authorization and authentication
+
 
 @app.route('/gconnect', methods=['POST', 'GET'])
 def gconnect():
