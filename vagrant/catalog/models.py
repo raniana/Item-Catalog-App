@@ -12,9 +12,9 @@ class User(Base):
     __tablename__ = 'user'
     
     id = Column(Integer, primary_key=True)
-    username = Column(String(250), nullable=False)
-    picture = Column(String(250))
+    name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
+    picture = Column(String(250))
 
 
 class Category(Base):
@@ -53,10 +53,11 @@ class Item(Base):
     @property
     def serialize(self):
         return{
-            'name': self.name,
-            'description': self.description,
-            'brand': self.brand,
-            'price': self.price,
+            'category_id'             :self.category_id,
+            'name'                    :self.name,
+            'description'             :self.description,
+            'brand'                   :self.brand,
+            'price'                   :self.price,
             }
 
 

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Show an Item Details</title>
-</head>
-<body>
+{%extends 'main.html'%}
+{%block content%}
+<body class="crud-page">
+	<header class="container-fluid">
+		<h2>Catalog App</h2>
+	</header>
 	<div class="flash">
       	{%with messages = get_flashed_messages()%}
       	{%if messages%}
@@ -16,17 +16,27 @@
       	{%endwith%}
 
       </div>
-	<h1>Show Item</h1>
-	<h3>{{item.name}}</h3>
+	<h2>{{item.name}}</h2>
+	<label>Description:</label>
 	{{item.description}}
+    </br>
 	{%if item.brand!=None%}
+	<label>Brand:</label>
 	{{item.brand}}
+    </br>
 	{%endif%}
-	{{item.price}}
+	<label>Price:</label>
+	${{item.price}}
+    </br>
+    </br>
+    
+	<a href="{{url_for('editItem',itemID=item.id)}}"><button class="myButton" type="button">
+		<span  aria-hidden="true"></span>Edit</button></a>
+	<a href="{{url_for('deleteItem',itemID=item.id)}}"><button class="myButton" type="button">
+		<span  aria-hidden="true"></span>Delete</button></a>
+	<a href="{{url_for('showItems',catID=item.category_id)}}"><button class="myButton" type="button">
+		<span  aria-hidden="true"></span>Back</button></a>	
 
-	<a href="{{url_for('editItem',itemID=item.id)}}">Edit</a>
-	<a href="{{url_for('deleteItem',itemID=item.id)}}">Delete</a>
-	<a href="{{url_for('showItems',catID=item.category_id)}}">Back</a>
 
 </body>
-</html>
+{%endblock%}

@@ -1,13 +1,10 @@
 {%extends 'main.html'%}
 {%block content%}
-<body>
- 
- <header class="container-fluid">
-   <h2>Catalog App</h2>
-   
+<body>  
+<header class="container-fluid">
+  <h2>Catalog App</h2>
    <a href="{{url_for('showCategories')}}"> <i class="fa fa-home" style="float: right; color: #e63d00">Home</i> 
- </header> 
-
+</header>
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
@@ -15,8 +12,19 @@
       <ul class="nav nav-pills nav-stacked">
       <!--  <li class="active"><a href="#section1">Home</a></li> -->
 
-      <a href="{{url_for('addCategory')}}" class="myButton">Add category</a>
+      <div class="flash">
+        {%with messages = get_flashed_messages()%}
+        {%if messages%}
+        <ul>
+          {%for message in messages%}
+          <li><strong>{{message}}</strong></li>
+          {%endfor%}
+        </ul>
+        {%endif%}
+        {%endwith%}
 
+      </div>
+      
   {%for c in categories%}
   
   <li><a href="{{url_for('showItems',catID=c.id)}}"><h3>{{c.name}}</h3></a></li>
@@ -27,25 +35,12 @@
       </ul><br>
   
     </div>
-    <div class="col-sm-9"> 
+    <div class="col-sm-9">
+    
 
     <h2>{{category.name}}</h2>        
     <hr>
-    {%with messages=get_flashed_messages()%}
-      {%if messages%}
-      <ul>
-        {%for message in messages%}
-        <li><strong>{{message}}</strong></li>
-      {%endfor%}
-      </ul>
-      {%endif%}
-      {%endwith%}
 
-
-    <a href="{{url_for('editCategory',catID=category.id)}}" class="myButton">Edit Category</a>
-    <a href="{{url_for('deleteCategory',catID=category.id)}}" class="myButton">Delete Category</a>
-</br> 
-    <a href="{{url_for('addItem',catID=category.id)}}" class="myButton">Add Item</a>
     
       <h3>Items:</h3>     
       <p>

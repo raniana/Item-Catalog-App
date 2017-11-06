@@ -1,22 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Edit an Item</title>
-</head>
-<body>
+{%extends 'main.html'%}
+{%block content%}
+<body class="crud-page">
+	<header class="container-fluid">
+		<h2>Catalog App</h2>
+	</header>
+	<h3>Edit an Item</h3>
 	<form action="{{url_for('editItem',itemID=item.id)}}" method="post" >
-		<label>name:</label>
-		<input type="text" name="name" size="30" placeholder="{{item.name}}">
-		<label>description:</label>
-		<textarea name="description"></textarea>
-		<label>brand:</label>
-		<input type="text" name="brand" size="30">
-		<label>price:</label>
-		<input type="text" name="price">
-		<input type="submit" Value="Edit">
-		<a href="{{url_for('showItem',itemID=item.id)}}">Cancel</a>
+		<label>Name:</label>
+		<input type="text" maxlength="30" name="name" placeholder="{{item.name}}">
+	    </br>
+	    </br>
+	 <p class="formfield">
+		<label>Description:</label>
+		<textarea name="description"  maxlength="250" rows="3" placeholder="description of item"></textarea>
+	    </br>
+	</p>
+	    </br>
+		<label>Brand:</label>
+		<input type="text" size="15" name="brand" placeholder="brand name">
+	    </br>
+	    </br>
+		<label>Price:</label>
+		<input type="text" size="10" name="price" placeholder="${{item.price}}">
+	    </br>
+	    </br>
+		<button type="submit" class="myButton">Edit</button>
+		<a href="{{url_for('showItem',itemID=item.id)}}"><button class="cancelButton" type="button">
+		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Cancel</button></a>
+		
 		
 	</form>
 
 </body>
-</html>
+{%endblock%}

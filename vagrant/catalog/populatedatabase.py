@@ -20,7 +20,7 @@ session = DBSession()
 
 
 # Create dummy user
-User1 = User(username="Rania Idris", email="ranoya@outlook.com",
+User1 = User(name="nana morgan", email="ranoya@outlook.com",
              picture='http://coverstimeline.com/app/uploads/2015/03/51595.jpg')
 session.add(User1)
 session.commit()
@@ -31,20 +31,20 @@ category1 = Category(user_id=1, name="Grocery")
 session.add(category1)
 session.commit()
 Item1 = Item(user_id=1, name="Tomatoes", description="Aroma tomatoes by lb",
-                     price="$1.99", category=category1)
+                     price="1.99", category=category1)
 
 session.add(Item1)
 session.commit()
 
 
 Item2 = Item(user_id=1, name="Potatoes", description="Brown potatoes by lb",
-                     price="$2.99", category=category1)
+                     price="2.99", category=category1)
 
 session.add(Item2)
 session.commit()
 
 Item3 = Item(user_id=1, name="Celery", description="Green juicy celery",
-                     price="$1.50", category=category1)
+                     price="1.50", category=category1)
 
 session.add(Item3)
 session.commit()
@@ -94,13 +94,13 @@ session.commit()
 
 
 Item1 = Item(user_id=1, name="Baby Wipes", description="Unscented Wipes in water",
-                     price="$3.99",brand="Luvvies",category=category2)
+                     price="3.99",brand="Luvvies",category=category2)
 
 session.add(Item1)
 session.commit()
 
 Item2 = Item(user_id=1, name="Diapers",
-                     description=" super absorping diapers for sensitive skin 60 counts", price="$20", brand="Luvvies", category=category2)
+                     description=" super absorping diapers for sensitive skin 60 counts", price="20", brand="Luvvies", category=category2)
 
 session.add(Item2)
 session.commit()

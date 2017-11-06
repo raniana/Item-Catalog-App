@@ -1,0 +1,26 @@
+{%extends 'main.html'%}
+{%block content%}
+<body class="crud-page">
+	<header class="container-fluid">
+		<h2>Catalog App</h2>
+	</header>
+
+	<h2>{{item.name}}</h2>
+	<label>Description:</label>
+	{{item.description}}
+    </br>
+	{%if item.brand!=None%}
+	<label>Brand:</label>
+	{{item.brand}}
+    </br>
+	{%endif%}
+	<label>Price:</label>
+	${{item.price}}
+    </br>
+    </br>
+
+	<a href="{{url_for('showItems',catID=item.category_id)}}"><button class="myButton" type="button">
+		<span  aria-hidden="true"></span>Back</button></a>	
+
+</body>
+{%endblock%}

@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Delete Category</title>
-</head>
-<body>
+{%extends 'main.html'%}
+{%block content%}
+<body class="crud-page">
+	<header class="container-fluid">
+		<h2>Catalog App</h2>
+	</header>
 	<form action="{{url_for('deleteCategory',catID=category.id)}}" method="post">
-		<h1>Are you sure you want to delete {{category.name}}</h1>
-		<input type="submit" value="Delete">
-		<a href="{{url_for('showCategories')}}">Cancel</a>
+		<h3>Are you sure you want to delete category "{{category.name}}"</h3>
+		<button type="submit" class="myButton">Delete</button>
+		<a href="{{url_for('showItems',catID=category.id)}}"><button class="cancelButton" type="button">
+		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button></a>
 	</form>
 
 </body>
-</html>
+{%endblock%}

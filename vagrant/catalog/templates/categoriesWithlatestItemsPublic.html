@@ -1,16 +1,17 @@
 {%extends 'main.html'%}
 {%block content%}
-<body>
- 
- <header class="container-fluid">
-   <h2>Catalog App</h2>
-   <a href="{{url_for('gdisconnect')}}"><button class="login-button" type="button">
-    <span aria-hidden="true"></span>Log out</button></a>
- </header> 
+<body>  
+
+<header class="container-fluid">
+  <h2>Catalog App</h2>
+  <a href="{{url_for('showLogin')}}"><button class="login-button" type="button">
+    <span aria-hidden="true"></span>Login</button></a>
+</header>
 
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 sidenav">
+
       <h4>Shopping Categories</h4>
       <ul class="nav nav-pills nav-stacked">
       <!--  <li class="active"><a href="#section1">Home</a></li> -->
@@ -27,8 +28,7 @@
         {%endwith%}
 
       </div>
-      <a href="{{url_for('addCategory')}}" class="myButton">Add category</a>
-
+      
   {%for c in categories%}
   
   <li><a href="{{url_for('showItems',catID=c.id)}}"><h3>{{c.name}}</h3></a></li>
@@ -39,10 +39,8 @@
       </ul><br>
   
     </div>
-   <div class="col-sm-9">
-            
-    <hr>
-
+    <div class="col-sm-9">
+      
         <h2>Latest Items</h2>   
       <p>
          {%for i in items%}
@@ -52,6 +50,7 @@
       </p>
       <br><br>
      </div> 
+    
   </div>
 </div>
 <footer class="container-fluid">
@@ -60,3 +59,5 @@
 
 </body>
 {%endblock%}
+
+

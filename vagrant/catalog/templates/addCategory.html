@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Add a Category</title>
-</head>
-<body>
+{%extends 'main.html'%}
+{%block content%}
+<body class="crud-page">
+	<header class="container-fluid">
+		<h2>Catalog App</h2>
+	</header>
+	<h3>Add a new category</h3>
 	<form action="{{url_for('addCategory')}}" method="post">
-		<label>name:</label>
-		<input type="text" size="30" name="name">
-		<input type="submit" value="Add">
+		<label class="name-font">Name:</label>
+		<input  type="text" size="30" name="name" placeholder="name of category">
+		<button class="myButton" type="submit">Add</button> 
 	</form>
 
 </body>
-</html>
+{%endblock%}
