@@ -1,6 +1,6 @@
 
 ## Catalog App:
-This python App displays a set of categories , each category contains number of items. The app provides authprization and authentication functionalities. Logged in users can add new 
+This python App displays a set of categories , each category contains number of items. The app provides authorization and authentication functionalities. Logged in users can add new 
 categories. Users who created a category can add, edit or delete Items to it, so as delete or edit their own categories.
 
 ## How to Run The Code:
